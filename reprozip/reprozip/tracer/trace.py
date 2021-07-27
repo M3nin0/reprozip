@@ -142,7 +142,7 @@ def get_files(conn):
         UNION ALL
         SELECT 'open' AS event_type, name, mode, timestamp
         FROM opened_files
-        GROUP BY name
+        GROUP BY name, mode, event_type
         HAVING timestamp = MIN(timestamp)
         ORDER BY timestamp;
         ''')
