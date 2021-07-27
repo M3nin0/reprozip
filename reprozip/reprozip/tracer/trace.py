@@ -142,6 +142,8 @@ def get_files(conn):
         UNION ALL
         SELECT 'open' AS event_type, name, mode, timestamp
         FROM opened_files
+        GROUP BY name
+        HAVING timestamp = MIN(timestamp)
         ORDER BY timestamp;
         ''')
     executed = set()
