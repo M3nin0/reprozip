@@ -102,6 +102,8 @@ def shell_escape(s):
     """
     if isinstance(s, bytes):
         s = s.decode('utf-8')
+    else:
+        s = str(s)
     if not s or any(c not in safe_shell_chars for c in s):
         return '"%s"' % (s.replace('\\', '\\\\')
                           .replace('"', '\\"')
